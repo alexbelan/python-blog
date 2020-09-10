@@ -1,5 +1,17 @@
 {% load static %}
 
-<nav>
- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores illum magni minus obcaecati porro sit tenetur vel! Accusantium atque eveniet ipsa porro possimus, quo? Adipisci excepturi itaque nostrum quam voluptatibus?
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="{% url 'index' %}">Главная</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'category' 'cooking' %}">Кулинария</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'category' 'it' %}">IT</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'category' 'cars' %}">Машины</a></li>
+    </ul>
+  </div>
 </nav>

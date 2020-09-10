@@ -19,6 +19,7 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_page),
-    path('post/<int:post_id>', views.post_page),
+    path('', views.index_page, name="index"),
+    path('post/<int:post_id>', views.post_page, name="views_post"),
+    path('category/<str:name>', views.category_page, name="category"),
 ]

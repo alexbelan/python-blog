@@ -5,10 +5,14 @@
 {% block content %}
 <div class="articles">
     {% for post in posts %}
-    <article>
-        <h3><a href="{% url 'views_post' post.id %}">{{ post.title }}</a></h3>
-    </article>
-    <hr>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ BASE_DIR }}{{ post.img.url }}" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'views_post' post.id %}">{{ post.title }}</a></h5>
+            <a href="{% url 'views_post' post.id %}" class="btn btn-primary">Читать</a>
+        </div>
+    </div>
     {% endfor %}
 </div>
+
 {% endblock %}

@@ -15,6 +15,7 @@ class Post(models.Model):
     id = models.AutoField(unique=True, primary_key=True)
     author = models.ManyToManyField(User)
     title = models.CharField(max_length=50)
+    img = models.ImageField(upload_to='static/posts/')
     text = models.TextField()
     data = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

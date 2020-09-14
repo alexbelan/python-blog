@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,10 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+
+TINYMCE_DEFAULT_CONFIG = {
+	'plugins': 'paste',
+	'paste_remove_styles': 'true',
+	'paste_remove_styles_if_webkit': 'true',
+	'paste_strip_class_attributes': 'all',
+}

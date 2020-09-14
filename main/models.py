@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -16,7 +17,7 @@ class Post(models.Model):
     author = models.ManyToManyField(User)
     title = models.CharField(max_length=50)
     img = models.ImageField(upload_to='static/posts/')
-    text = models.TextField()
+    text = HTMLField()
     data = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 

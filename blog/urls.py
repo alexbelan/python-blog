@@ -25,4 +25,5 @@ urlpatterns = [
     path('', views.index_page, name="index"),
     path('post/<int:post_id>', views.post_page, name="views_post"),
     path('category/<str:name>', views.category_page, name="category"),
+    path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

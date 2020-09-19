@@ -12,6 +12,15 @@ class Category(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+    id = models.AutoField(unique=True, primary_key=True)
+    email = models.EmailField()
+    text = models.TextField(max_length=150)
+
+    def __str__(self):
+        return self.text
+
+
 class Post(models.Model):
     id = models.AutoField(unique=True, primary_key=True)
     author = models.ManyToManyField(User)
@@ -20,6 +29,7 @@ class Post(models.Model):
     text = HTMLField()
     data = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    comments = models.ManyToManyField(Comment, blank=True)
 
     def __str__(self):
         return self.title

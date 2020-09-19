@@ -7,5 +7,25 @@
     <h1>{{post.title}}</h1>
     <img src="{{ post.img.url }}" class="post-img" alt="">
     {{ post.text|safe }}
+    <hr>
+     <form action="./{{post.id}}" method="POST">
+         <label for="id_email">Email:</label><br>
+         {{ form.email }} <br>
+         <label for="id_text">Текст:</label><br>
+         {{ form.text }} <br>
+        {% csrf_token %}
+        <input type="submit" value="Отправить">
+    </form>
+    <hr>
+    <div class="comments">
+        {% for comment in comments %}
+            <div class="card">
+                <h5 class="card-header">{{ comment.email }}</h5>
+                <div class="card-body">
+                    {{ comment.text }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

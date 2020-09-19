@@ -3,6 +3,9 @@
 {% block title %}{{post.title}}{% endblock %}
 
 {% block content %}
-<h1>{{post.title}}</h1>
-{{post.text}}
+<div class="container post  ">
+    <h1>{{post.title}}</h1>
+    <img src="{{ post.img.url }}" class="post-img" alt="">
+    {{ post.text|safe }}
+</div>
 {% endblock %}

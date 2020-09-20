@@ -2,6 +2,12 @@
     padding: 20px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.articles .card {
+    width: 286px;
+    margin: 20px 0;
 }
 
 .articles .card img {
@@ -9,6 +15,7 @@
     height: 190px;
     object-fit: cover;
 }
+
 
 .post {
     width: 800px;

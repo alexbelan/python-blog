@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from .models import Post, Category
 from .forms import CommentForm
@@ -8,17 +8,44 @@ from .forms import CommentForm
 
 # Create your views here.
 def index_page(request):
+    posts = Post.objects.all().order_by('-id')
+    if 'page' in request.GET:
+        page = request.GET['page']
+    else:
+        page = 1
+    paginator = Paginator(posts, 15)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     context = {
-        'posts': Post.objects.all().order_by('-id')
+        'posts': posts
     }
     return render(request, "pages/index.html", context)
 
 
 def category_page(request, name):
     category = Category.objects.get(name=name)
+
+    posts = Post.objects.filter(category=category).order_by('-id')
+    if 'page' in request.GET:
+        page = request.GET['page']
+    else:
+        page = 1
+    paginator = Paginator(posts, 15)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     context = {
         'title': category.title,
-        'posts': Post.objects.filter(category=category)
+        'posts': posts
     }
     return render(request, "pages/category.html", context)
 
